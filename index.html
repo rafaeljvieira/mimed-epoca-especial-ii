@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Época Especial II — Simulador de Transição de Planos (MIMED)</title>
+<title>Época Especial II — Inscrição (transição de planos MIMED)</title>
 <style>
 :root{
   --bg:#ffffff; --ink:#1f2328; --muted:#5c6370; --line:#dcdfe3;
@@ -118,54 +118,49 @@ details li{margin:6px 0}
 footer{color:var(--muted);font-size:.82rem;margin-top:28px}
 @media (min-width:640px){header h1{font-size:1.75rem}}
 @media (prefers-reduced-motion:no-preference){.panel,.final{animation:none}}
+.uc[disabled]{opacity:.5;cursor:not-allowed}
+.parts{margin:8px 0 0;padding:10px 12px;border:1px solid var(--line);border-radius:6px;background:var(--soft)}
+.parts label{display:flex;gap:8px;align-items:center;padding:4px 0;font-size:.93rem;cursor:pointer}
+.parts p{margin:0 0 6px;font-size:.88rem;color:var(--muted)}
+.sel{list-style:none;margin:0;padding:0}
+.sel li{padding:10px 0;border-top:1px dashed var(--line)}
+.sel li:first-child{border-top:0}
+.sel .t{font-weight:600}
+.sel .n{font-size:.9rem;color:var(--muted)}
 </style>
 </head>
 <body>
 <header class="band">
   <div class="wrap">
     <h1>Época Especial II e a Transição para o Plano 2026</h1>
-    <p>Diz-nos que UCs ficaram por fazer em 2025/2026. Este simulador mostra que exames tens de fazer, a que UCs do novo plano isso corresponde e em que UCs tens de te inscrever.</p>
+    <p>Escolhe as UCs do Plano 2026 em que te queres inscrever na Época Especial II. O simulador indica o exame que vais fazer e prepara o teu pedido de inscrição.</p>
   </div>
 </header>
 
 <main class="wrap">
   <div class="box warn" style="margin-top:20px;border-left:6px solid var(--ink)"><strong>Atenção:</strong><div>A Época Especial II destina-se <strong>apenas a estudantes com estatuto especial</strong> (trabalhador-estudante, dirigente associativo, estudante atleta, estudante bombeiro, pai/mãe estudante ou estudante com necessidades educativas especiais). Se não tens estatuto, não te podes inscrever nesta época.</div></div>
-  <div class="mode" role="group" aria-label="Modo">
-    <button id="mA" aria-pressed="true">Tenho UCs do plano antigo por fazer</button>
-    <button id="mB" aria-pressed="false">Quero saber como fazer UCs do novo plano</button>
-  </div>
 
-  <!-- MODO A -->
-  <section id="secA">
-    <h2>Que UCs do plano antigo (2021) ficaram por fazer?</h2>
-    <p class="hint">Abre cada ano e seleciona apenas as UCs a que <strong>reprovaste, mas em que ficaste admitido a exame</strong>, isto é, em que cumpriste os critérios definidos na ficha da UC (por exemplo, assiduidade e, nalgumas UCs, nota mínima na avaliação distribuída). Todas as UCs que não selecionares contam como concluídas.</p>
-    <div id="listA"></div>
-
-    <div id="resA"></div>
-  </section>
-
-  <!-- MODO B -->
-  <section id="secB" hidden>
-    <h2>UCs do Plano 2026 que tens por fazer</h2>
-    <p class="hint">Abre cada ano e escolhe as UCs do novo plano que te faltam. Para cada uma, diz-nos depois como correu nas UCs do plano antigo que lhe correspondem.</p>
-    <div id="listB"></div>
-    <div id="resB"></div>
+  <section>
+    <h2>Em que UCs te queres inscrever?</h2>
+    <p class="hint">Abre cada ano e seleciona as UCs do Plano 2026 correspondentes a UCs do plano antigo (2021) que não concluíste, mas em que tens <strong>frequência válida</strong>, isto é, em que ficaste admitido a exame em 2024/2025 ou 2025/2026. Em cada UC indicamos o exame que vais fazer.</p>
+    <div id="list"></div>
+    <div id="res"></div>
   </section>
 
   <details class="rules">
     <summary>Como funciona e o que precisas de saber</summary>
     <ul>
       <li>A Época Especial II destina-se <strong>apenas a estudantes com estatuto especial</strong>: trabalhador-estudante, dirigente associativo, estudante atleta, estudante bombeiro, pai/mãe estudante ou estudante com necessidades educativas especiais.</li>
-      <li>O simulador não verifica se cumpres os critérios de admissão a exame: seleciona apenas as UCs em que ficaste admitido, de acordo com a ficha de cada UC.</li>
-      <li>Os exames são sempre sobre a <strong>matéria e as regras de avaliação de 2025/2026</strong>, ou seja, da UC do plano antigo que te falta. Não tens de estudar matéria nova.</li>
-      <li>Como as UCs do plano antigo já não existem, tens de te inscrever na Época Especial II nas <strong>UCs do novo plano</strong> indicadas no resumo. A nota do exame é lançada em cada uma delas.</li>
-      <li>Se um exame der equivalência a várias UCs, fazes esse exame <strong>uma única vez</strong>.</li>
-      <li>A inscrição é feita pela <strong>Unidade de Gestão Académica</strong>, a partir do pedido que enviares através do formulário no fim do resumo.</li>
-      <li>Quando uma UC nova resulta de mais do que uma UC antiga, a nota resulta de uma <strong>ponderação a definir pela regência</strong> entre essas UCs. Essas regras ainda não estão fixadas.</li>
-      <li>Esta ferramenta é uma simulação para te ajudar a planear. Em caso de dúvida, confirma com a Unidade de Gestão Académica.</li>
+      <li>O exame é sempre sobre a <strong>matéria da UC do plano antigo</strong>. Não tens de estudar matéria nova.</li>
+      <li>Isto aplica-se às UCs que mantêm o nome (com os mesmos ou com outros ECTS) e às que mudaram de nome mas mantêm os conteúdos.</li>
+      <li>Nas UCs que resultam da fusão de duas UCs antigas (Genética Molecular e Citogenómica; Humanidades em Medicina e Psicologia Médica I), podes fazer só a componente em atraso, ou ambas. A nota final é a média das componentes, ponderada pelos ECTS de cada uma no Plano 2021.</li>
+      <li>As <strong>UCs novas</strong>, que não existiam no plano antigo, não têm exame nesta época.</li>
+      <li>A frequência que obtiveste na UC do plano antigo conta para a UC do novo plano. A nota é lançada na UC do Plano 2026 em que te inscreves.</li>
+      <li>A inscrição é feita pela <strong>Unidade de Gestão Académica</strong>, a partir do pedido que enviares através do formulário no fim da página.</li>
+      <li>O simulador não verifica se tens frequência: seleciona apenas as UCs em que ficaste admitido a exame. Em caso de dúvida, confirma com a Unidade de Gestão Académica.</li>
     </ul>
   </details>
-  <footer>Com base nas regras de correspondência entre o Plano 2021 e o Plano 2026 do MIMED. Regime sujeito a aprovação final.</footer>
+  <footer>Com base na deliberação do Conselho Pedagógico sobre a Época Especial II de 2026/2027 e na tabela de correspondência entre o Plano 2021 e o Plano 2026 do MIMED.</footer>
 </main>
 
 <script>
@@ -205,80 +200,6 @@ const P26 = [
  ["MI641","Pediatria (prática clínica)",6,6],["MI642","Psiquiatria (prática clínica)",3,6],["MI643","Saúde Pública",3,6],["MI644","Cuidados Paliativos",2,6],
  ["MI645","Competências Clínicas em Urgência e Emergência",4,6],["MI646","Dissertação",10,6]
 ];
-/* regras: dest -> lista de alternativas (cada alternativa = lista de códigos 2021, todas necessárias) */
-const C = {
- MI129:[["MI119"]],MI130:[["MI120"]],MI132:[["MI122"]],MI131:[["MI121","MI128"]],MI133:[["MI123"]],MI134:[["MI123"]],
- MI135:[["MI124"]],MI136:[["MI125"]],MI138:[["MI127"]],MI137:[["MI126"]],MI140:[["MI127"]],MI139:[["MI123"]],
- MI244:[["MI232"]],MI245:[["MI233"]],MI246:[["MI234"]],MI247:[["MI235"]],MI248:[["MI237"]],MI249:[["MI240"]],
- MI250:[["MI238"]],MI251:[["MI239"]],MI252:[["MI243"]],MI253:[["MI241"]],MI254:[["MI236","MI242"],["MI236","MI123"],["MI242","MI123"]],MI255:[["MI341"]],
- MI342:[["MI331"]],MI343:[["MI332"]],MI344:[["MI333"]],MI345:[["MI334"]],MI346:[["MI335"]],
- MI347:[["MI336"]],MI348:[["MI337"]],MI349:[["MI338"]],MI351:[["MI339"]],MI352:[["MI340"]],MI350:[["MI334"],["OPT39","MI331"]],
- MI445:[["MI432"]],MI446:[["MI433"]],MI447:[["MI434"]],MI448:[["MI435"]],MI449:[["MI436"]],MI451:[["MI437"]],MI452:[["MI438"]],
- MI453:[["MI439"]],MI454:[["MI440"]],MI456:[["MI441"]],MI450:[["MI442"]],MI457:[["MI443"]],MI458:[["MI444"]],
- MI544:[["MI531"]],MI551:[["MI532"]],MI552:[["MI533"]],MI546:[["MI534"]],MI556:[["MI535"]],MI557:[["MI536"]],MI545:[["MI537"]],
- MI558:[["MI538"]],MI549:[["MI539"]],MI559:[["MI540"]],MI547:[["MI541"]],MI550:[["MI542"]],MI560:[["MI543"]],MI548:[["MI541"]],
- MI637:[["MI628"]],MI638:[["MI629"]],MI646:[["MI630"]],MI639:[["MI631"]],MI640:[["MI632"]],MI641:[["MI633"]],MI642:[["MI634"]],MI643:[["MI635"]],MI644:[["MI636"]],
- MI645:[]
-};
-const OPT = new Set(["OPC1","OPC4"]);
-const NOTES = {
- MI445:"O exame de Doenças Cardiovasculares dá equivalência à UC completa, incluindo a componente de Suporte Básico de Vida.",
- MI645:"É uma UC nova, que não existia no plano antigo, e não tem equivalência: tens de a fazer normalmente, durante o ano letivo."
-};
-const N21 = Object.fromEntries(P21.map(r=>[r[0],{nome:r[1],ects:r[2],ano:r[3]}]));
-const N26 = Object.fromEntries(P26.map(r=>[r[0],{nome:r[1],ects:r[2],ano:r[3]}]));
-const nm21 = c => N21[c].nome;
-const nm26 = c => N26[c].nome;
-const label26 = c => OPT.has(c) ? nm26(c) : `${nm26(c)} (${c})`;
-const label21 = c => `${nm21(c)} (${c})`;
-const esc = s => String(s).replace(/[&<>"]/g, ch=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[ch]));
-const joinPt = arr => arr.length<=1 ? arr.join("") : arr.slice(0,-1).join(", ")+" e "+arr[arr.length-1];
-const exPt = (codes, art) => (art? (codes.length>1?"os exames de ":"o exame de ") : (codes.length>1?"exames de ":"exame de ")) + joinPt(codes.map(nm21));
-const ExPt = codes => (codes.length>1?"Exames de ":"Exame de ");
-const orPt = arr => arr.length<=1 ? arr.join("") : arr.slice(0,-1).join(", ")+" ou "+arr[arr.length-1];
-
-/* ---------- MOTOR ---------- */
-// st: código 2021 -> 'aprovada' | 'atraso' | 'nao'
-function analyse(st, dests, choices){
-  const res = {};
-  const forced = new Set();
-  const single = [], multi = [];
-  for(const d of dests){
-    const alts = C[d];
-    if(!alts || alts.length===0){ res[d]={kind:"new"}; continue; }
-    if(alts.some(a=>a.every(c=>st[c]==="aprovada"))){ res[d]={kind:"ok", via:alts.find(a=>a.every(c=>st[c]==="aprovada"))}; continue; }
-    (alts.length===1?single:multi).push(d);
-  }
-  for(const d of single){
-    const a=C[d][0], miss=a.filter(c=>st[c]!=="aprovada");
-    if(miss.every(c=>st[c]==="atraso")){ miss.forEach(c=>forced.add(c)); res[d]={kind:"exam", via:a, exams:miss}; }
-    else res[d]={kind:"blocked", via:a, lacking:miss.filter(c=>st[c]!=="atraso")};
-  }
-  for(const d of multi){
-    const alts=C[d];
-    const feas=alts.map(a=>({a, miss:a.filter(c=>st[c]!=="aprovada")})).filter(o=>o.miss.every(c=>st[c]==="atraso"));
-    if(!feas.length){ res[d]={kind:"blocked", alts}; continue; }
-    feas.forEach(o=>o.cost=o.miss.filter(c=>!forced.has(c)).length);
-    const min=Math.min(...feas.map(o=>o.cost));
-    const best=feas.filter(o=>o.cost===min);
-    let pick=best[0];
-    if(best.length>1 && min>0){
-      const ch=choices[d]; const found=best.find(o=>o.a.join()===ch);
-      if(!found){ res[d]={kind:"pending", options:best.map(o=>o.a)}; continue; }
-      pick=found;
-      res[d]={kind:"exam", via:pick.a, exams:pick.miss, options:best.map(o=>o.a), allFeasible:feas};
-    } else res[d]={kind:"exam", via:pick.a, exams:pick.miss, allFeasible:feas};
-    pick.miss.forEach(c=>forced.add(c));
-  }
-  return res;
-}
-
-/* ---------- MODO A ---------- */
-/* ---------- FORMULÁRIO DE PEDIDO À UGA ----------
-   FORM_LINK: link público do formulário (Microsoft Forms).
-   PREFILL_SAMPLE: URL pré-preenchido de exemplo, gerado no Forms com 2 opções assinaladas
-   na pergunta das UCs do Plano 2026 e 2 na pergunta dos exames. Enquanto estiver vazio,
-   o botão abre o formulário em branco e a página mostra o que o estudante deve assinalar. */
 const FORM_LINK = "https://forms.cloud.microsoft/e/R9gmkKKMJg";
 const PREFILL_SAMPLE = "https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=yBuCt8xne0S1eYL3hUF0_JiooqAiEYVGn6iPjCuxaKZUMExMNDBTREdDNjRTT0pORjU2TzJGVVUxRy4u&r3e9290b1d7b04e97a7d8f2f4030557fb=%22%5B%5C%22Introdu%C3%A7%C3%A3o%20%C3%A0%20Medicina%20(MI139)%5C%22%2C%5C%22Fisiologia%20I%20(MI244)%5C%22%5D%22&r22ae71662e48411b8f3443b1d190949b=%22%5B%5C%22Metabolismo%20Humano%20(MI125)%5C%22%2C%5C%22Sa%C3%BAde%20das%20Popula%C3%A7%C3%B5es%20(MI127)%5C%22%5D%22";
 const LABELS26 = new Set(P26.map(r=>`${r[1]} (${r[0]})`));
@@ -309,267 +230,103 @@ function prefillUrl(v){
 function pedidoTexto(v){
   return ["PEDIDO DE INSCRIÇÃO — ÉPOCA ESPECIAL II (transição Plano 2021 → Plano 2026)","",
     "UCs do Plano 2026 em que pretendo inscrever-me:", v.INS.map(x=>"- "+x).join("\n")||"—","",
-    "Exames que vou realizar (UCs do Plano 2021, matéria de 2025/2026):", v.EX.map(x=>"- "+x).join("\n")||"—"].join("\n");
+    "Exames que vou realizar (matéria das UCs do Plano 2021):", v.EX.map(x=>"- "+x).join("\n")||"—"].join("\n");
 }
-function sendBox(v, pending, mode){
-  const ready = !pending && v.INS.length>0;
-  const pre = prefillUrl(v);
+function sendBox(v, pending){
+  const ready=!pending && v.INS.length>0;
+  const pre=prefillUrl(v);
   let h=`<div class="send"><h3>Pedir a inscrição à UGA</h3>`;
-  h+=`<p>A inscrição nas UCs do novo plano é feita pela <strong>Unidade de Gestão Académica</strong>. Para enviares o teu pedido, clica em <strong>«${pre?"Abrir formulário preenchido":"Abrir formulário"}»</strong>${pre?": o formulário abre com as UCs em que te tens de inscrever e os exames que vais fazer já assinalados. Só tens de completar os teus dados e submeter.":"."}</p>`;
-  if(pending) h+=`<p><strong>Antes de enviar, escolhe acima o exame/combinação de exames que preferes.</strong></p>`;
-  if(!pre && ready){
-    h+=`<p style="margin-bottom:0"><strong>No formulário, assinala exatamente:</strong></p><p style="margin-top:4px">UCs do Plano 2026: ${esc(joinPt(v.INS))}.<br>Exames: ${esc(joinPt(v.EX))}.</p>`;
-  }
-  const link = pre || FORM_LINK;
-  h+= ready ? `<a class="btn primary" id="send${mode}" href="${esc(link)}" target="_blank" rel="noopener noreferrer">${pre?"Abrir formulário preenchido":"Abrir formulário"}</a>`
-            : `<button class="btn primary" type="button" disabled>${pre?"Abrir formulário preenchido":"Abrir formulário"}</button>`;
-  h+=`<button class="btn" type="button" id="copyL${mode}" ${ready?"":"disabled"}>Copiar link do formulário</button>`;
-  h+=`<p class="small"><strong>Não partilhes este link com colegas:</strong> é gerado a partir das tuas seleções acima e só serve para a tua situação. Cada estudante deve usar o simulador e abrir o seu próprio formulário.</p><p class="small">Se o formulário não abrir, usa «Copiar link do formulário» e cola o link no navegador. Confirma os dados antes de submeter.</p></div>`;
-  return h;
+  h+=`<p>A inscrição é feita pela <strong>Unidade de Gestão Académica</strong>. Clica em <strong>«${pre?"Abrir formulário preenchido":"Abrir formulário"}»</strong>${pre?": o formulário abre com as UCs e os exames já assinalados. Só tens de completar os teus dados e submeter.":"."}</p>`;
+  if(pending) h+=`<p><strong>Antes de enviar, escolhe acima as componentes que vais fazer.</strong></p>`;
+  if(!pre && ready) h+=`<p style="margin-bottom:0"><strong>No formulário, assinala exatamente:</strong></p><p style="margin-top:4px">UCs do Plano 2026: ${esc(joinPt(v.INS))}.<br>Exames: ${esc(joinPt(v.EX))}.</p>`;
+  const link=pre||FORM_LINK, lab=pre?"Abrir formulário preenchido":"Abrir formulário";
+  h+= ready ? `<a class="btn primary" href="${esc(link)}" target="_blank" rel="noopener noreferrer">${lab}</a>` : `<button class="btn primary" type="button" disabled>${lab}</button>`;
+  h+=`<button class="btn" type="button" id="copyL" ${ready?"":"disabled"}>Copiar link do formulário</button>`;
+  h+=`<p class="small"><strong>Não partilhes este link com colegas:</strong> é gerado a partir das tuas seleções e só serve para a tua situação.</p><p class="small">Se o formulário não abrir, usa «Copiar link do formulário» e cola o link no navegador. Confirma os dados antes de submeter.</p>`;
+  if(ready) h+=`<div class="copyinfo"><button class="linkbtn" type="button" id="copyI">Copiar informação</button></div>`;
+  return h+`</div>`;
 }
-function bindSend(v, mode){
-  const l=document.getElementById("copyL"+mode); if(l) l.onclick=()=>copyText(prefillUrl(v)||FORM_LINK, l);
-  const out=document.getElementById("res"+mode);
-  const cards=out.querySelectorAll(mode==="A"?".exam":".panel");
-  const ready=!out.querySelector('.send .btn.primary[disabled]') && v.INS.length>0;
-  if(cards.length && ready){
-    const d=document.createElement("div"); d.className="copyinfo";
-    d.innerHTML=`<button class="linkbtn" type="button">Copiar informação</button>`;
-    cards[cards.length-1].appendChild(d);
-    const c=d.querySelector("button"); c.onclick=()=>copyText(pedidoTexto(v), c);
-  }
+/* regime da deliberação: UC 2026 -> tipo e UC(s) do Plano 2021 */
+const MAP = {"MI132": {"t": "igual", "src": ["MI122"]}, "MI138": {"t": "igual", "src": ["MI127"]}, "MI245": {"t": "igual", "src": ["MI233"]}, "MI246": {"t": "igual", "src": ["MI234"]}, "MI247": {"t": "igual", "src": ["MI235"]}, "MI248": {"t": "igual", "src": ["MI237"]}, "MI250": {"t": "igual", "src": ["MI238"]}, "MI253": {"t": "igual", "src": ["MI241"]}, "MI140": {"t": "igual", "src": ["MI242"]}, "MI252": {"t": "igual", "src": ["MI243"]}, "MI343": {"t": "igual", "src": ["MI332"]}, "MI344": {"t": "igual", "src": ["MI333"]}, "MI346": {"t": "igual", "src": ["MI335"]}, "MI347": {"t": "igual", "src": ["MI336"]}, "MI348": {"t": "igual", "src": ["MI337"]}, "MI351": {"t": "igual", "src": ["MI339"]}, "MI352": {"t": "igual", "src": ["MI340"]}, "MI255": {"t": "igual", "src": ["MI341"]}, "MI446": {"t": "igual", "src": ["MI433"]}, "MI447": {"t": "igual", "src": ["MI434"]}, "MI449": {"t": "igual", "src": ["MI436"]}, "MI452": {"t": "igual", "src": ["MI438"]}, "MI453": {"t": "igual", "src": ["MI439"]}, "MI454": {"t": "igual", "src": ["MI440"]}, "MI456": {"t": "igual", "src": ["MI441"]}, "MI457": {"t": "igual", "src": ["MI443"]}, "MI544": {"t": "igual", "src": ["MI531"]}, "MI556": {"t": "igual", "src": ["MI535"]}, "MI545": {"t": "igual", "src": ["MI537"]}, "MI558": {"t": "igual", "src": ["MI538"]}, "MI559": {"t": "igual", "src": ["MI540"]}, "MI547": {"t": "igual", "src": ["MI541"]}, "MI550": {"t": "igual", "src": ["MI542"]}, "MI646": {"t": "igual", "src": ["MI630"]}, "MI639": {"t": "igual", "src": ["MI631"]}, "MI640": {"t": "igual", "src": ["MI632"]}, "MI641": {"t": "igual", "src": ["MI633"]}, "MI642": {"t": "igual", "src": ["MI634"]}, "MI643": {"t": "igual", "src": ["MI635"]}, "MI644": {"t": "igual", "src": ["MI636"]}, "MI129": {"t": "ects", "src": ["MI119"]}, "MI135": {"t": "ects", "src": ["MI124"]}, "MI136": {"t": "ects", "src": ["MI125"]}, "MI244": {"t": "ects", "src": ["MI232"]}, "MI251": {"t": "ects", "src": ["MI239"]}, "MI342": {"t": "ects", "src": ["MI331"]}, "MI345": {"t": "ects", "src": ["MI334"]}, "MI349": {"t": "ects", "src": ["MI338"]}, "MI448": {"t": "ects", "src": ["MI435"]}, "MI451": {"t": "ects", "src": ["MI437"]}, "MI450": {"t": "ects", "src": ["MI442"]}, "MI458": {"t": "ects", "src": ["MI444"]}, "MI551": {"t": "ects", "src": ["MI532"]}, "MI552": {"t": "ects", "src": ["MI533"]}, "MI546": {"t": "ects", "src": ["MI534"]}, "MI557": {"t": "ects", "src": ["MI536"]}, "MI549": {"t": "ects", "src": ["MI539"]}, "MI638": {"t": "ects", "src": ["MI629"]}, "MI445": {"t": "nome", "src": ["MI432"]}, "MI130": {"t": "nome", "src": ["MI120"]}, "MI137": {"t": "nome", "src": ["MI126"]}, "MI249": {"t": "nome", "src": ["MI240"]}, "MI560": {"t": "nome", "src": ["MI543"]}, "MI637": {"t": "nome", "src": ["MI628"]}, "MI131": {"t": "fusao", "src": ["MI121", "MI128"]}, "MI133": {"t": "fusao", "src": ["MI123", "MI236"]}, "MI134": {"t": "nova", "src": []}, "MI139": {"t": "nova", "src": []}, "MI254": {"t": "nova", "src": []}, "MI350": {"t": "nova", "src": []}, "MI548": {"t": "nova", "src": []}, "MI645": {"t": "nova", "src": []}};
+const N21 = Object.fromEntries(P21.map(r=>[r[0],{nome:r[1],ects:r[2],ano:r[3]}]));
+const N26 = Object.fromEntries(P26.map(r=>[r[0],{nome:r[1],ects:r[2],ano:r[3]}]));
+const label26 = c => `${N26[c].nome} (${c})`;
+const label21 = c => `${N21[c].nome} (${c})`;
+const ectsPt = e => String(e).replace(".",",");
+const esc = s => String(s).replace(/[&<>"]/g, ch=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[ch]));
+const joinPt = arr => arr.length<=1 ? arr.join("") : arr.slice(0,-1).join(", ")+" e "+arr[arr.length-1];
+const NOTES = {
+ MI445:"O exame de Doenças Cardiovasculares dá a UC completa, incluindo a componente de Suporte Básico de Vida."
+};
+
+const state = { sel:new Set(), parts:{} };
+
+function sub(c){
+  const m=MAP[c]; if(!m) return "";
+  if(m.t==="nova") return "UC nova: sem Época Especial II";
+  if(m.t==="fusao") return "Escolhes as componentes: "+m.src.map(x=>N21[x].nome).join(" + ");
+  return "Exame: "+N21[m.src[0]].nome;
 }
-const stateA = { atraso:new Set(), opt39:"nao", choices:{} };
-function buildListA(){
-  const box=document.getElementById("listA"); box.innerHTML="";
+function buildList(){
+  const box=document.getElementById("list"); box.innerHTML="";
   for(let y=1;y<=6;y++){
-    const det=document.createElement("details"); det.className="yr";
-    const sm=document.createElement("summary");
-    sm.innerHTML=`<span>${y}.º ano</span><span class="cnt" id="cntA${y}"></span>`;
-    det.appendChild(sm);
-    const g=document.createElement("div"); g.className="ucgrid";
-    P21.filter(r=>r[3]===y).forEach(([c,n])=>{
-      const b=document.createElement("button"); b.className="uc"; b.type="button";
-      b.setAttribute("aria-pressed", stateA.atraso.has(c)?"true":"false");
-      b.innerHTML=`${esc(n)}<small>${c}</small>`;
-      b.onclick=()=>{ stateA.atraso.has(c)?stateA.atraso.delete(c):stateA.atraso.add(c); b.setAttribute("aria-pressed",stateA.atraso.has(c)?"true":"false"); updCnt(); renderA(); };
+    const ucs=P26.filter(r=>r[3]===y && MAP[r[0]]);
+    const d=document.createElement("details"); d.className="yr";
+    d.innerHTML=`<summary>${y}.º ano <span class="cnt" id="cnt${y}"></span></summary><div class="ucgrid"></div>`;
+    const g=d.querySelector(".ucgrid");
+    ucs.forEach(r=>{
+      const c=r[0], m=MAP[c], b=document.createElement("button");
+      b.type="button"; b.className="uc"; b.dataset.c=c;
+      b.innerHTML=`${esc(r[1])}<small>${esc(sub(c))}</small>`;
+      if(m.t==="nova"){ b.disabled=true; b.setAttribute("aria-disabled","true"); }
+      else { b.setAttribute("aria-pressed", state.sel.has(c)); b.onclick=()=>{ state.sel.has(c)?state.sel.delete(c):state.sel.add(c); b.setAttribute("aria-pressed", state.sel.has(c)); updCnt(); render(); }; }
       g.appendChild(b);
     });
-    det.appendChild(g);
-    if(y===3){
-      const o=document.createElement("div"); o.className="optrow";
-      o.innerHTML=`<div class="nm">Fisiopatologia Médica (optativa) <small>OPT39</small></div><p class="hint" style="margin:0 0 6px">Só interessa se fizeste ou tentaste fazer esta optativa. Conta para a UC Fisiopatologia Médica do novo plano.</p><div class="seg" id="opt39" role="group" aria-label="Situação na optativa Fisiopatologia Médica"></div>`;
-      det.appendChild(o);
-    }
-    box.appendChild(det);
+    box.appendChild(d);
   }
-  buildOpt39();
-  updCnt();
 }
 function updCnt(){
-  for(let y=1;y<=6;y++){ const n=[...stateA.atraso].filter(c=>N21[c].ano===y).length+(y===3&&stateA.opt39==="atraso"?1:0); const el=document.getElementById("cntA"+y); if(el) el.textContent=n?`${n} por fazer`:""; }
+  for(let y=1;y<=6;y++){ const n=[...state.sel].filter(c=>N26[c].ano===y).length; document.getElementById("cnt"+y).textContent=n?`${n} selecionada${n>1?"s":""}`:""; }
 }
-function buildOpt39(){
-  const s=document.getElementById("opt39"); s.innerHTML="";
-  [["aprovada","Fiz e passei"],["atraso","Reprovei, mas fiquei admitido a exame"],["nao","Não fiz esta optativa"]].forEach(([v,t])=>{
-    const b=document.createElement("button"); b.type="button"; b.className="s-"+v; b.textContent=t;
-    b.setAttribute("aria-pressed", stateA.opt39===v?"true":"false");
-    b.onclick=()=>{ stateA.opt39=v; buildOpt39(); updCnt(); renderA(); };
-    s.appendChild(b);
-  });
-}
-function statusA(){
-  const st={};
-  P21.forEach(([c])=>{ if(c==="OPT39") return; st[c] = stateA.atraso.has(c)?"atraso":"aprovada"; });
-  st.OPT39 = stateA.opt39;
-  return st;
-}
-function renderA(){
-  const out=document.getElementById("resA");
-  const st=statusA();
-  const late=[...stateA.atraso].concat(stateA.opt39==="atraso"?["OPT39"]:[]);
-  if(!late.length){ out.innerHTML=`<h2>Resultado</h2><p class="empty">Seleciona acima as UCs que ficaram por fazer para veres os exames e as inscrições.</p>`; return; }
-  const dests=Object.keys(C).filter(d=>C[d].some(a=>a.some(c=>st[c]==="atraso")));
-  const r=analyse(st,dests,stateA.choices);
-  // agrupar por exame
-  const byExam={}; late.forEach(c=>byExam[c]=[]);
-  const choiceBlocks=[];
-  for(const d of dests){
-    const x=r[d];
-    if(x.kind==="exam"){
-      x.exams.forEach(e=>{ (byExam[e]=byExam[e]||[]).push(d); });
-      if(x.options) choiceBlocks.push(d);
-    }
-    if(x.kind==="pending") choiceBlocks.push(d);
-  }
-  let h=`<h2>Resultado</h2>`;
-  // escolhas
-  for(const d of choiceBlocks){
-    const x=r[d];
-    const pend=x.kind==="pending";
-    h+=`<div class="box warn"${pend?' style="outline:1px solid var(--accent)"':''}><strong>Escolhe o exame/combinação de exames para ${esc(nm26(d))}</strong><div class="ucgrid" style="margin-top:8px">`;
-    x.options.forEach(a=>{ const miss=a.filter(c=>st[c]!=="aprovada"); const key=a.join(); h+=`<button type="button" class="uc pickA" data-d="${d}" data-v="${key}" aria-pressed="${!pend&&x.via.join()===key}">${esc(miss.map(nm21).join(" + "))}</button>`; });
-    h+=`</div></div>`;
-  }
-  if(late.some(e=>(byExam[e]||[]).length)) h+=`<p class="hint">Na Época Especial II, tens de te inscrever em <strong>todas</strong> as UCs do Plano 2026 indicadas em baixo.</p>`;
-  h+=`<div class="route">`;
-  const unneeded=[];
-  const pendingDests=dests.filter(d=>r[d].kind==="pending");
-  const pendingExams=new Set(pendingDests.flatMap(d=>r[d].options.flat().filter(c=>st[c]==="atraso")));
-  const insc=new Set(), cred=new Set(), pond=new Set();
-  for(const e of late){
-    const ds=byExam[e]||[];
-    if(!ds.length){ if(!pendingExams.has(e)) unneeded.push(e); continue; }
-    h+=`<div class="exam"><div class="lbl">Exame que vais fazer (matéria de 2025/2026)</div><div class="t">${esc(label21(e))}</div><div class="lbl" style="margin-top:10px">UCs do Plano de 2026 a que dá equivalência:</div><ul class="gives" style="margin-top:4px">`;
-    ds.forEach(d=>{
-      const x=r[d]; const multi=x.via.length>1; if(multi) pond.add(d);
-      const others=x.exams.filter(c=>c!==e);
-      let tags = OPT.has(d) ? `<span class="tag cred">sem inscrição</span>` : ``;
-      OPT.has(d)?cred.add(d):insc.add(d);
-      let extra="";
-      if(others.length) extra+=`<div class="note">Também tens de passar ${esc(exPt(others,true).replace(/^o/,"no").replace(/^os/,"nos"))}.</div>`;
-      if(multi) extra+=`<div class="pondbox"><strong>Ponderação a definir pela regência</strong> entre: ${esc(joinPt(x.via.map(label21)))}.</div>`;
-      if(NOTES[d]) extra+=`<div class="note">${esc(NOTES[d])}</div>`;
-      h+=`<li><strong>${esc(label26(d))}</strong>${tags}${extra}</li>`;
-    });
-    h+=`</ul></div>`;
-  }
-  h+=`</div>`;
-  if(unneeded.length){
-    h+=`<div class="box ok"><strong>Exames que não precisas de fazer</strong>`;
-    unneeded.forEach(e=>{
-      const ds=Object.keys(C).filter(d=>C[d].some(a=>a.includes(e)));
-      const okd=ds.filter(d=>r[d]&&r[d].kind==="ok");
-      h+=`<div>${esc(nm21(e))}: ${okd.length? `a UC nova correspondente (${esc(joinPt(okd.map(label26)))}) já te é dada por outras UCs em que obtiveste aprovação.` : `não é necessário, com o exame que escolheste.`}</div>`;
-    });
-    h+=`</div>`;
-  }
-  const blocked=dests.filter(d=>r[d].kind==="blocked");
-  if(blocked.length){
-    h+=`<div class="box warn"><strong>UCs novas que estes exames não resolvem</strong>`;
-    blocked.forEach(d=>{
-      const x=r[d];
-      const lack=[...new Set((x.lacking||(x.alts||[]).flat()).filter(c=>st[c]!=="aprovada"&&st[c]!=="atraso"))];
-      h+=`<div>${esc(label26(d))}: depende também de ${esc(orPt(lack.map(nm21)))}, que ainda não concluíste. Farás esta UC nova normalmente, durante o ano letivo.</div>`;
-    });
-    h+=`</div>`;
-  }
-  // lista final
-  const exams=late.filter(e=>(byExam[e]||[]).length);
-  pendingDests.forEach(d=>{ if(!OPT.has(d)) insc.add(d); });
-  const vA={ INS:[...insc].sort().map(label26), EX:exams.map(label21) };
-  h+=sendBox(vA, pendingDests.length>0, "A");
-  out.innerHTML=h;
-  bindSend(vA,"A");
-  out.querySelectorAll('.pickA').forEach(b=>b.onclick=()=>{ stateA.choices[b.dataset.d]=b.dataset.v; renderA(); });
-}
-
-/* ---------- MODO B ---------- */
-const stateB = { sel:new Set(), st:{}, choices:{} };
-function buildListB(){
-  const box=document.getElementById("listB"); box.innerHTML="";
-  for(let y=1;y<=6;y++){
-    const det=document.createElement("details"); det.className="yr";
-    const sm=document.createElement("summary");
-    sm.innerHTML=`<span>${y}.º ano</span><span class="cnt" id="cntB${y}"></span>`;
-    det.appendChild(sm);
-    const g=document.createElement("div"); g.className="ucgrid";
-    P26.filter(r=>r[3]===y).forEach(([c,n])=>{
-      const b=document.createElement("button"); b.className="uc"; b.type="button";
-      b.setAttribute("aria-pressed", stateB.sel.has(c)?"true":"false");
-      b.innerHTML=`${esc(n)}<small>${OPT.has(c)?"grupo de optativas":c}</small>`;
-      b.onclick=()=>{ stateB.sel.has(c)?stateB.sel.delete(c):stateB.sel.add(c); b.setAttribute("aria-pressed",stateB.sel.has(c)?"true":"false"); updCntB(); renderB(); };
-      g.appendChild(b);
-    });
-    det.appendChild(g); box.appendChild(det);
-  }
-  updCntB();
-}
-function updCntB(){
-  for(let y=1;y<=6;y++){ const n=[...stateB.sel].filter(c=>N26[c].ano===y).length; const el=document.getElementById("cntB"+y); if(el) el.textContent=n?`${n} selecionada${n>1?"s":""}`:""; }
-}
-function seg(code){
-  const v=stateB.st[code]||"nao";
-  return `<div class="seg" role="group" aria-label="Situação em ${esc(nm21(code))}">`+
-    [["aprovada","Fiz e passei"],["atraso","Reprovei, mas fiquei admitido a exame"],["nao","Não fiz / não fiquei admitido a exame"]]
-    .map(([k,t])=>`<button type="button" class="s-${k}" data-c="${code}" data-v="${k}" aria-pressed="${v===k}">${t}</button>`).join("")+`</div>`;
-}
-function renderB(){
-  const out=document.getElementById("resB");
-  const sel=[...stateB.sel].sort((a,b)=>P26.findIndex(r=>r[0]===a)-P26.findIndex(r=>r[0]===b));
-  if(!sel.length){ out.innerHTML=`<h2>Resultado</h2><p class="empty">Escolhe acima as UCs do Plano 2026 que te faltam.</p>`; return; }
-  const st={}; P21.forEach(([c])=>st[c]=stateB.st[c]||"nao");
-  let h=`<h2>Resultado</h2><p class="hint">Nas UCs que podes fazer na Época Especial II (caixas amarelas), inscreves-te na própria UC do Plano 2026.</p>`;
-  const insc=new Set(), exams=new Set(), choicesB=[], pendingB=[];
-  for(const d of sel){
-    const alts=C[d];
-    h+=`<div class="panel ucres"><h4>${esc(label26(d))}</h4>`;
-    if(!alts.length){ h+=`<div class="box warn">${esc(NOTES.MI645)}</div></div>`; continue; }
-    const origins=[...new Set(alts.flat())];
-    h+=`<div class="hint" style="margin:0">${alts.length>1?"Podes ter esta UC com qualquer uma destas combinações do plano antigo: "+esc(alts.map(a=>joinPt(a.map(nm21))).join("; ou ")):"Corresponde, no plano antigo, a: "+esc(joinPt(alts[0].map(nm21)))}.</div>`;
-    h+=`<div class="orig">`+origins.map(c=>`<div class="row"><span class="nm">${esc(nm21(c))} <small>${c}</small></span>${seg(c)}</div>`).join("")+`</div>`;
-    const okAlt=alts.find(a=>a.every(c=>st[c]==="aprovada"));
-    if(okAlt){
-      h+=`<div class="box ok"><strong>Já tens esta UC feita, por equivalência</strong>Não precisas de exame: conta a aprovação que já tens em ${esc(joinPt(okAlt.map(nm21)))}.${okAlt.length>1?`<div class="pondbox"><strong>Ponderação a definir pela regência</strong> entre: ${esc(joinPt(okAlt.map(label21)))}.</div>`:""}</div>`;
+function render(){
+  const out=document.getElementById("res");
+  const sel=P26.map(r=>r[0]).filter(c=>state.sel.has(c));
+  if(!sel.length){ out.innerHTML=`<h2>Resumo</h2><p class="empty">Seleciona acima as UCs em que te queres inscrever.</p>`; return; }
+  let pending=false; const EX=[]; let h=`<h2>Resumo</h2><div class="panel"><ul class="sel">`;
+  for(const c of sel){
+    const m=MAP[c];
+    h+=`<li><div class="t">${esc(label26(c))}</div>`;
+    if(m.t==="fusao"){
+      const tot=m.src.reduce((a,x)=>a+N21[x].ects,0);
+      const chosen=m.src.filter(x=>(state.parts[c]||new Set()).has(x));
+      h+=`<div class="parts"><p>Que componentes vais fazer? Assinala só as que tens em atraso, ou ambas. A nota final é a média ponderada pelos ECTS (${m.src.map(x=>ectsPt(N21[x].ects)).join(" e ")}); para uma componente que já tenhas feito, conta a nota que já tens.</p>`;
+      m.src.forEach(x=>{ h+=`<label><input type="checkbox" class="pt" data-c="${c}" data-x="${x}" ${chosen.includes(x)?"checked":""}> ${esc(N21[x].nome)} <span class="n">(${ectsPt(N21[x].ects)} ECTS, peso ${Math.round(100*N21[x].ects/tot)}%)</span></label>`; });
+      h+=`</div>`;
+      if(!chosen.length){ pending=true; h+=`<div class="n"><strong>Escolhe pelo menos uma componente.</strong></div>`; }
+      else { h+=`<div class="n">Exame${chosen.length>1?"s":""}: ${esc(joinPt(chosen.map(x=>N21[x].nome)))} (matéria do plano antigo).</div>`; chosen.forEach(x=>EX.push(label21(x))); }
     } else {
-      const routes=alts.map(a=>({a, miss:a.filter(c=>st[c]!=="aprovada")}));
-      const feas=routes.filter(o=>o.miss.every(c=>st[c]==="atraso")).sort((x,y)=>x.miss.length-y.miss.length);
-      const infeas=routes.filter(o=>!o.miss.every(c=>st[c]==="atraso"));
-      if(feas.length){
-        // retirar formas dominadas (que exigem os mesmos exames e mais algum)
-        const fz=feas.filter(o=>!feas.some(q=>q!==o && q.miss.length<o.miss.length && q.miss.every(c=>o.miss.includes(c))));
-        const multiF=fz.length>1;
-        const chosen=multiF ? fz.find(o=>o.a.join()===stateB.choices[d]) : fz[0];
-        h+=`<div class="box warn"><strong>Podes fazê-la na Época Especial II</strong>`;
-        if(multiF){
-          h+=`<div style="margin-top:2px">Escolhe o exame/combinação de exames:</div><div class="ucgrid" style="margin-top:6px">`;
-          fz.forEach(o=>h+=`<button type="button" class="uc pickB" data-d="${d}" data-v="${o.a.join()}" aria-pressed="${chosen===o}">${esc(o.miss.map(nm21).join(" + "))}</button>`);
-          h+=`</div>`;
-        }
-        if(chosen){
-          const also=[...new Set(chosen.miss.flatMap(e=>Object.keys(C).filter(x=>x!==d && C[x].length===1 && C[x][0].includes(e))))];
-          h+=`<div style="margin-top:8px">${ExPt(chosen.miss)}<strong>${esc(joinPt(chosen.miss.map(nm21)))}</strong> (matéria de 2025/2026).</div>`;
-          if(chosen.a.length>1) h+=`<div class="pondbox"><strong>Ponderação a definir pela regência</strong> entre: ${esc(joinPt(chosen.a.map(label21)))}.</div>`;
-          if(also.length) h+=`<div class="note">O mesmo exame dá também equivalência a ${esc(joinPt(also.map(label26)))}.</div>`;
-        }
-        h+=`</div>`;
-        if(!OPT.has(d)) insc.add(d);
-        if(chosen){ chosen.miss.forEach(e=>exams.add(e)); if(multiF) choicesB.push([d,chosen.miss]); }
-        else pendingB.push(d);
-      }
-      if(infeas.length){
-        h+=`<div class="box bad"><strong>${feas.length?"Formas que não podes usar":"Não é possível fazer esta UC na Época Especial II"}</strong>`;
-        infeas.forEach(o=>{ const lack=o.miss.filter(c=>st[c]!=="atraso"); h+=`<div>Por ${esc(joinPt(o.a.map(nm21)))}: precisarias de ${esc(joinPt(lack.map(nm21)))}, mas indicaste que não a fizeste ou não ficaste admitido a exame.</div>`; });
-        if(!feas.length) h+=`<div style="margin-top:6px">Terás de fazer ${esc(nm26(d))} normalmente, durante o ano letivo.</div>`;
-        h+=`</div>`;
-      }
+      const x=m.src[0];
+      h+=`<div class="n">Exame: ${esc(N21[x].nome)} (matéria do plano antigo).</div>`;
+      if(NOTES[c]) h+=`<div class="n">${esc(NOTES[c])}</div>`;
+      EX.push(label21(x));
     }
-    if(NOTES[d]) h+=`<div class="note">${esc(NOTES[d])}</div>`;
-    h+=`</div>`;
+    h+=`</li>`;
   }
-  const vB={ INS:[...insc].map(label26), EX:[...exams].map(label21) };
-  if(insc.size) h+=sendBox(vB, pendingB.length>0, "B");
+  h+=`</ul></div>`;
+  const v={INS:sel.map(label26), EX:[...new Set(EX)]};
+  h+=sendBox(v,pending);
   out.innerHTML=h;
-  if(insc.size) bindSend(vB,"B");
-  out.querySelectorAll('.seg button').forEach(b=>b.onclick=()=>{ stateB.st[b.dataset.c]=b.dataset.v; renderB(); });
-  out.querySelectorAll('.pickB').forEach(b=>b.onclick=()=>{ stateB.choices[b.dataset.d]=b.dataset.v; renderB(); });
+  out.querySelectorAll(".pt").forEach(cb=>cb.onchange=()=>{ const s=state.parts[cb.dataset.c]||(state.parts[cb.dataset.c]=new Set()); cb.checked?s.add(cb.dataset.x):s.delete(cb.dataset.x); render(); });
+  const l=document.getElementById("copyL"); if(l) l.onclick=()=>copyText(prefillUrl(v)||FORM_LINK, l);
+  const ci=document.getElementById("copyI"); if(ci) ci.onclick=()=>copyText(pedidoTexto(v), ci);
 }
-
-/* ---------- UTIL ---------- */
 function copyText(t, btn){
   const done=()=>{ const o=btn.textContent; btn.textContent="Copiado"; setTimeout(()=>btn.textContent=o,1800); };
   try{ navigator.clipboard.writeText(t).then(done).catch(()=>fallback()); }catch(e){ fallback(); }
   function fallback(){ const ta=document.createElement("textarea"); ta.value=t; document.body.appendChild(ta); ta.select(); try{document.execCommand("copy"); done();}catch(e){} ta.remove(); }
 }
-function setMode(m){
-  document.getElementById("mA").setAttribute("aria-pressed", m==="A");
-  document.getElementById("mB").setAttribute("aria-pressed", m==="B");
-  document.getElementById("secA").hidden = m!=="A";
-  document.getElementById("secB").hidden = m!=="B";
-}
-document.getElementById("mA").onclick=()=>setMode("A");
-document.getElementById("mB").onclick=()=>setMode("B");
-buildListA(); renderA(); buildListB(); renderB();
+
+buildList(); updCnt(); render();
 </script>
 </body>
 </html>
